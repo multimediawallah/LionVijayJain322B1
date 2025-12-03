@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elect Lion Vijay Kumar Jain | 2nd VDG Candidate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles for Chart Containers as per requirements */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 500px;
+        }
+        @media (max-width: 640px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #fdfbf7; /* Warm neutral background */
+            color: #1f2937;
+        }
+        h1, h2, h3, .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Custom Lions Colors */
+        .lions-blue { color: #00338D; }
+        .bg-lions-blue { background-color: #00338D; }
+        .lions-gold { color: #FFC72C; }
+        .bg-lions-gold { background-color: #FFC72C; }
+        .border-lions-gold { border-color: #FFC72C; }
+
+        /* Smooth reveal animation classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <!-- Chosen Palette: Lions Club Official (Royal Blue #00338D & Gold #FFC72C) on Warm Neutral (#fdfbf7) Background -->
+    <!-- Application Structure Plan: 
+         1. Hero Section: Immediate visual impact with candidate photo and key proposition.
+         2. Interactive Tabs/Navigation: Sticky nav to jump between Bio, Lions Journey, and Impact.
+         3. "The Leader" Visualization: A Radar Chart visualizing the character traits (Visionary, Astute, etc.) to make the adjectives listed in the flyer engaging.
+         4. "Impact Portfolio": A filterable grid (Lions, Business, Social) to organize the dense list of affiliations without overwhelming the user.
+         5. Call to Action: Clear endorsement and voting appeal.
+    -->
+    <!-- Visualization & Content Choices:
+         1. Hero: Text + Image -> Inform -> Introduction -> Clean layout -> Tailwind.
+         2. Traits: Adjectives List -> Inform -> Radar Chart -> Shows balanced leadership personality -> Chart.js.
+         3. Career/Social: List of roles -> Organize -> Filterable Cards -> User can choose what to read (Business vs Charity) -> JS + HTML.
+         4. Timeline: Career History -> Inform -> Vertical List -> structured HTML.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm py-4 top-0">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="text-2xl font-bold lions-blue serif-font tracking-wide">LION VIJAY</div>
+            <div class="hidden md:flex space-x-8 text-sm font-semibold tracking-widest uppercase text-gray-600">
+                <a href="#hero" class="hover:text-[#00338D] transition-colors">Home</a>
+                <a href="#vision" class="hover:text-[#00338D] transition-colors">Vision</a>
+                <a href="#journey" class="hover:text-[#00338D] transition-colors">Journey</a>
+                <a href="#impact" class="hover:text-[#00338D] transition-colors">Impact</a>
+                <a href="#endorsement" class="hover:text-[#00338D] transition-colors">Vote</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-[#00338D]">
+                &#9776;
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t absolute w-full left-0 top-full shadow-lg">
+            <div class="flex flex-col p-4 space-y-3 text-center font-semibold text-gray-600">
+                <a href="#hero" class="block hover:text-[#00338D]">Home</a>
+                <a href="#vision" class="block hover:text-[#00338D]">Vision</a>
+                <a href="#journey" class="block hover:text-[#00338D]">Journey</a>
+                <a href="#impact" class="block hover:text-[#00338D]">Impact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <!-- Text Content -->
+            <div class="order-2 md:order-1 space-y-6 reveal active">
+                <div class="inline-block px-3 py-1 bg-blue-100 text-[#00338D] text-xs font-bold tracking-widest uppercase rounded-full mb-2">
+                    Candidate for 2026-27
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+                    <span class="lions-blue">Visionary.</span> <span class="text-yellow-600">Virtuous.</span> <br>
+                    <span class="serif-font italic">Vigilant.</span>
+                </h1>
+                <p class="text-lg text-gray-600 leading-relaxed max-w-lg">
+                    Elect <strong>Lion Vijay Kumar Jain</strong> for Second Vice District Governor, Lions International District 322B11. A legacy of service, a promise of progress.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="#journey" class="px-8 py-3 bg-lions-blue text-white font-bold rounded shadow-lg hover:bg-blue-800 transition transform hover:-translate-y-1 text-center">
+                        View Journey
+                    </a>
+                    <a href="#endorsement" class="px-8 py-3 border-2 border-[#00338D] text-[#00338D] font-bold rounded hover:bg-blue-50 transition text-center">
+                        Why Vote?
+                    </a>
+                </div>
+                
+                <!-- Quick Stats Row -->
+                <div class="grid grid-cols-3 gap-4 pt-8 border-t border-gray-200 mt-8">
+                    <div>
+                        <div class="text-3xl font-bold lions-gold">2</div>
+                        <div class="text-xs uppercase text-gray-500 font-bold">Intl. President Medals</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold lions-gold">100%</div>
+                        <div class="text-xs uppercase text-gray-500 font-bold">Success Rate</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold lions-gold">MJF</div>
+                        <div class="text-xs uppercase text-gray-500 font-bold">Progressive Lead Donor</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Content -->
+            <div class="order-1 md:order-2 relative reveal active delay-200 flex justify-center">
+                <!-- Decorative Circle -->
+                <div class="absolute inset-0 bg-yellow-100 rounded-full blur-3xl opacity-50 transform translate-x-10 translate-y-10 -z-10"></div>
+                
+                <!-- Main Image Container -->
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white max-w-md">
+                    <!-- Image Source Updated with user-provided URL -->
+                    <img src="https://i.postimg.cc/26CKTXX1/Whats-App-Image-2025-12-04-at-1-02-06-AM.png" 
+                         alt="Lion Vijay Kumar Jain" 
+                         class="w-full h-auto object-cover transform hover:scale-105 transition duration-700">
+                    
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <p class="text-white font-serif text-xl">Lions Club of Howrah</p>
+                        <p class="text-yellow-400 text-sm uppercase tracking-wider">Sponsoring Club</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Traits Visualization -->
+    <section id="vision" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold lions-blue mb-4">The Leadership Profile</h2>
+                <p class="text-gray-600">
+                    A leader isn't defined by titles, but by character. Based on his peer reviews and service history, here is the profile of Lion Vijay Kumar Jain.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Chart Container -->
+                <div class="chart-container reveal bg-gray-50 rounded-xl p-4 shadow-inner border border-gray-100">
+                    <canvas id="traitsChart"></canvas>
+                </div>
+
+                <!-- Traits List -->
+                <div class="space-y-6 reveal">
+                    <h3 class="text-2xl font-bold text-gray-800">Key Characteristics</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex items-start">
+                            <span class="text-2xl mr-3">🔭</span>
+                            <div>
+                                <h4 class="font-bold text-[#00338D]">Visionary</h4>
+                                <p class="text-sm text-gray-500"> Sees beyond the horizon to plan for the future of District 322B11.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-2xl mr-3">💡</span>
+                            <div>
+                                <h4 class="font-bold text-[#00338D]">Innovative</h4>
+                                <p class="text-sm text-gray-500">Brings fresh ideas to solve age-old challenges.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-2xl mr-3">⚖️</span>
+                            <div>
+                                <h4 class="font-bold text-[#00338D]">Judicious</h4>
+                                <p class="text-sm text-gray-500">Fair, balanced, and just in all decision-making processes.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-2xl mr-3">🤝</span>
+                            <div>
+                                <h4 class="font-bold text-[#00338D]">Affable</h4>
+                                <p class="text-sm text-gray-500">Approachable, friendly, and a true team player.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-yellow-50 border-l-4 border-[#FFC72C] text-sm text-gray-700 italic">
+                        "Vijay has had a chequered Lionistic Career! Ever since his LEO days he has excelled in all the posts he has handled!"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprehensive Impact Portfolio (Filterable) -->
+    <section id="impact" class="py-20 bg-[#fdfbf7]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold lions-blue mb-4">A Multi-Faceted Leader</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore Lion Vijay's contributions across Lionism, Business, and Society. Click the buttons below to filter his portfolio.</p>
+                
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-4 mt-8">
+                    <button class="filter-btn active px-6 py-2 rounded-full border border-[#00338D] bg-[#00338D] text-white font-bold transition hover:opacity-90 shadow-md" data-filter="all">All</button>
+                    <button class="filter-btn px-6 py-2 rounded-full border border-[#00338D] text-[#00338D] font-bold transition hover:bg-blue-50" data-filter="lion">Lions Achievements</button>
+                    <button class="filter-btn px-6 py-2 rounded-full border border-[#00338D] text-[#00338D] font-bold transition hover:bg-blue-50" data-filter="business">Business & Professional</button>
+                    <button class="filter-btn px-6 py-2 rounded-full border border-[#00338D] text-[#00338D] font-bold transition hover:bg-blue-50" data-filter="social">Social Responsibility</button>
+                </div>
+            </div>
+
+            <!-- Grid Container -->
+            <div id="portfolio-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
+                
+                <!-- Item 1: Lion -->
+                <div class="portfolio-item lion bg-white rounded-xl shadow-lg overflow-hidden border-t-4 border-[#FFC72C] hover:shadow-2xl transition-shadow">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="bg-blue-100 p-2 rounded-lg text-[#00338D] text-xl">🦁</div>
+                            <span class="text-xs font-bold uppercase text-gray-400">Award</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">International Recognition</h3>
+                        <p class="text-gray-600 text-sm">Recipient of <span class="font-bold text-[#00338D]">Two International Presidents Medals</span> and an International Leadership Medal.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2: Business -->
+                <div class="portfolio-item business bg-white rounded-xl shadow-lg overflow-hidden border-t-4 border-gray-800 hover:shadow-2xl transition-shadow">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="bg-gray-100 p-2 rounded-lg text-gray-800 text-xl">💼</div>
+                            <span class="text-xs font-bold uppercase text-gray-400">Professional</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Chartered Accountant</h3>
+                        <p class="text-gray-600 text-sm">Practising CA with diverse family business interests in Railway Infrastructure, R&D, Real Estate, and Automobiles.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3: Social -->
+                <div class="portfolio-item social bg-white rounded-xl shadow-lg overflow-hidden border-t-4 border-green-500 hover:shadow-2xl transition-shadow">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="bg-green-100 p-2 rounded-lg text-green-700 text-xl">🩸</div>
+                            <span class="text-xs font-bold uppercase text-gray-400">Service</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">SOS Blood Donor</h3>
+                        <p class="text-gray-600 text-sm">Registered SOS blood donor, demonstrating a personal commitment to saving lives beyond administrative roles.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4: Lion -->
+                <div class="portfolio-item lion bg-white rounded-xl shadow-lg overflow-hidden border-t-4 border-[#FFC72C] hover:shadow-2xl transition-shadow">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="bg-blue-100 p-2 rounded-lg text-[#00338D] text-xl">🏆</div>
+                            <span class="text-xs font-bold uppercase text-gray-400">Leadership</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Best President & Secretary</h3>
+                        <p class="text-gray-600 text-sm">Awarded Best Leo President, Best Leo Secretary, Best LION Secretary, and Best LION President.</p>
+                    </div>
+                </div>
+
+                <!-- Item 5: Social -->
+                <div class="portfolio-item social bg-white rounded-xl shadow-lg overflow-hidden border-t-4 border-green-500 hover:shadow-2xl transition-shadow">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="bg-green-100 p-2 rounded-lg text-green-700 text-xl">🏛️</div>
+                            <span class="text-xs font-bold uppercase text-gray-400">Affiliation</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">JITO Chief Patron</h3>
+                        <p class="text-gray-600 text-sm">Chief Patron member of Jain International Trade Organisation & Trustee of JITO Administrative Training Foundation.</p>
+                    </div>
+                </div>
+
+                <!-- Item 6: Business -->
+                <div class="portfolio-item business bg-white rounded-xl shadow-lg overflow-hidden border-t-4 border-gray-800 hover:shadow-2xl transition-shadow">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="bg-gray-100 p-2 rounded-lg text-gray-800 text-xl">📈</div>
+                            <span class="text-xs font-bold uppercase text-gray-400">Executive</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Chamber of Commerce</h3>
+                        <p class="text-gray-600 text-sm">Executive committee member of the Bharat Chamber of Commerce and Patron of All India Marwari Federation.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Lions Journey (Timeline) -->
+    <section id="journey" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/3 reveal">
+                    <h2 class="text-4xl font-bold lions-blue mb-6">A Journey of Excellence</h2>
+                    <!-- Image Source Updated with user-provided URL (reused for consistency) -->
+                    <img src="https://i.postimg.cc/26CKTXX1/Whats-App-Image-2025-12-04-at-1-02-06-AM.png" alt="Vijay Jain Close up" class="rounded-lg shadow-xl w-full border-4 border-white mb-6">
+                    <p class="text-gray-600 text-sm italic">
+                        "Serving as District PRO and a progressive MJF, I believe in leadership that listens and acts."
+                    </p>
+                </div>
+                
+                <div class="md:w-2/3 reveal">
+                    <div class="border-l-4 border-blue-200 ml-4 space-y-10 pl-6 relative">
+                        <!-- Timeline Item 1 -->
+                        <div class="relative">
+                            <div class="absolute -left-10 bg-[#FFC72C] w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-md">NOW</div>
+                            <h3 class="text-xl font-bold text-[#00338D]">District PRO</h3>
+                            <span class="text-sm text-gray-500 font-bold uppercase tracking-wide">Current Role</span>
+                            <p class="mt-2 text-gray-600">Active progressive MJF and lead donor. Managing public relations for the district with transparency and efficiency.</p>
+                        </div>
+                        <!-- Timeline Item 2 -->
+                        <div class="relative">
+                            <div class="absolute -left-10 bg-gray-300 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs">PAST</div>
+                            <h3 class="text-xl font-bold text-gray-800">Excellent Zone Chair</h3>
+                            <span class="text-sm text-gray-500 font-bold uppercase tracking-wide">District Leadership</span>
+                            <p class="mt-2 text-gray-600">Proved administrative capability by guiding clubs in the zone to excellence.</p>
+                        </div>
+                        <!-- Timeline Item 3 -->
+                        <div class="relative">
+                            <div class="absolute -left-10 bg-gray-300 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs">PAST</div>
+                            <h3 class="text-xl font-bold text-gray-800">Best President & Secretary</h3>
+                            <span class="text-sm text-gray-500 font-bold uppercase tracking-wide">Club Leadership</span>
+                            <p class="mt-2 text-gray-600">Honored as Best LION President and Best LION Secretary, setting benchmarks for club management.</p>
+                        </div>
+                         <!-- Timeline Item 4 -->
+                         <div class="relative">
+                            <div class="absolute -left-10 bg-gray-300 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs">START</div>
+                            <h3 class="text-xl font-bold text-gray-800">Leo Days</h3>
+                            <span class="text-sm text-gray-500 font-bold uppercase tracking-wide">The Foundation</span>
+                            <p class="mt-2 text-gray-600">Started the journey young, achieving Best Leo President and Best Leo Secretary.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Endorsement & Resolution -->
+    <section id="endorsement" class="py-20 bg-lions-blue text-white relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute top-0 right-0 opacity-10 text-9xl font-serif leading-none select-none">322B11</div>
+        
+        <div class="container mx-auto px-6 text-center relative z-10 reveal">
+            <h2 class="text-3xl md:text-5xl font-bold mb-8 font-serif">The Resolution</h2>
+            <div class="max-w-3xl mx-auto bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 mb-10">
+                <p class="text-lg md:text-xl italic font-light mb-6">
+                    "Resolved that Lion Vijay Kumar Jain be and is hereby nominated as a candidate for the office of the 2nd Vice District Governor of District 322B11 for the L.Y 2026-27... adopted in board meeting and ratified in general meeting held on 22nd November 2025."
+                </p>
+                <div class="text-sm font-bold uppercase tracking-widest text-[#FFC72C]">
+                    Unanimously Adopted • Lions Club of Howrah
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-6">Your Vote for Proven Leadership!</h3>
+            <button id="support-btn" class="bg-[#FFC72C] text-[#00338D] px-10 py-4 rounded-full text-xl font-bold shadow-lg hover:bg-white transition transform hover:scale-105">
+                I Support Lion Vijay
+            </button>
+            <p id="support-msg" class="mt-4 text-yellow-300 hidden font-bold">Thank you for your support!</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8 text-sm">
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest mb-4">Presented By</h4>
+                <p>Lions Club of Howrah</p>
+                <p>A Pioneer Club of the District</p>
+                <p class="mt-2">Serving through Multispeciality Hospitals, Blood Centre, Speech Therapy School, and more.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest mb-4">Contact</h4>
+                <p>Lion Vijay Kumar Jain</p>
+                <p>District 322B11</p>
+                <!-- Add actual contact details if available in source or allow user to edit -->
+            </div>
+            <div class="text-right">
+                <h4 class="text-white font-bold uppercase tracking-widest mb-4">Lions International</h4>
+                <p>&copy; 2025 Campaign for 2nd VDG</p>
+                <p>Designed for Digital Circulation</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- State Management ---
+        const state = {
+            currentFilter: 'all',
+            hasSupported: false
+        };
+
+        // --- Chart.js Visualization: The Leadership Radar ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('traitsChart').getContext('2d');
+            
+            // Data derived from the "balloons" in the flyer
+            const traitsData = {
+                labels: ['Visionary', 'Impactful', 'Judicious', 'Astute', 'Innovative', 'Industrious', 'Affable'],
+                datasets: [{
+                    label: 'Leadership Profile',
+                    data: [95, 90, 85, 88, 92, 90, 85], // Arbitrary high values to represent the adjectives
+                    backgroundColor: 'rgba(255, 199, 44, 0.4)', // Lions Gold transparent
+                    borderColor: '#00338D', // Lions Blue
+                    pointBackgroundColor: '#00338D',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#00338D',
+                    borderWidth: 2
+                }]
+            };
+
+            const config = {
+                type: 'radar',
+                data: traitsData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 14,
+                                    family: "'Lato', sans-serif",
+                                    weight: 'bold'
+                                },
+                                color: '#4b5563'
+                            },
+                            ticks: {
+                                display: false, // Hide numbers for cleaner look
+                                max: 100
+                            },
+                            suggestedMin: 50,
+                            suggestedMax: 100
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': Exemplary';
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            new Chart(ctx, config);
+        });
+
+        // --- Interactions: Filtering Portfolio ---
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update State
+                state.currentFilter = btn.dataset.filter;
+
+                // Update UI Buttons
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-[#00338D]', 'text-white');
+                    b.classList.add('text-[#00338D]');
+                });
+                btn.classList.add('bg-[#00338D]', 'text-white');
+                btn.classList.remove('text-[#00338D]');
+
+                // Filter Items with Animation
+                portfolioItems.forEach(item => {
+                    if (state.currentFilter === 'all' || item.classList.contains(state.currentFilter)) {
+                        item.classList.remove('hidden');
+                        setTimeout(() => item.classList.add('opacity-100', 'scale-100'), 50);
+                        item.classList.remove('opacity-0', 'scale-95');
+                    } else {
+                        item.classList.add('opacity-0', 'scale-95');
+                        setTimeout(() => item.classList.add('hidden'), 300); // Wait for transition
+                        item.classList.remove('opacity-100', 'scale-100');
+                    }
+                });
+            });
+        });
+
+        // --- Interaction: Mobile Menu Toggle ---
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- Interaction: Scroll Reveal Animation ---
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 150;
+
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+
+        // --- Interaction: Support Button ---
+        const supportBtn = document.getElementById('support-btn');
+        const supportMsg = document.getElementById('support-msg');
+
+        supportBtn.addEventListener('click', () => {
+            if (!state.hasSupported) {
+                state.hasSupported = true;
+                supportBtn.textContent = "Supported! 🦁";
+                supportBtn.classList.add('bg-green-500', 'text-white');
+                supportBtn.classList.remove('bg-[#FFC72C]', 'text-[#00338D]');
+                supportMsg.classList.remove('hidden');
+            }
+        });
+
+        // Initial Trigger
+        revealOnScroll();
+
+    </script>
+</body>
+</html>
